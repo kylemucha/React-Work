@@ -1,6 +1,6 @@
 export default function Recipe() {
 
-  //replacing with Anthropic or Hugging Face API Logic
+  //replacing with Anthropic or Hugging Face API Logic to pull real AI data
     return(
         <article className="suggested-recipe-container" aria-live="polite">
             <p>
