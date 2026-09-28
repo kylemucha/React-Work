@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 export default function IngredientsList(props) {
 
   const ingredientsList = props.ingredients.map((ing) => <li key={ing}>{ing}</li>);
