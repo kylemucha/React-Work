@@ -8,6 +8,7 @@ export default function Main() {
   const [ingredients, setIngredients] = React.useState([]);
   const [recipeShown, setRecipeShown] = React.useState(false);
   const [recipe, setRecipe] = React.useState("")
+  const [loading, setLoading] = React.useState(false)
 
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
@@ -15,7 +16,9 @@ export default function Main() {
   }
 
   async function generateRecipe() {
+    setLoading(true)
     const ClaudeResponse = await getRecipeFromChefClaude(ingredients)
+    setLoading(false)
     setRecipe(ClaudeResponse)
     setRecipeShown(true)
   }
@@ -34,6 +37,7 @@ export default function Main() {
         </button>
       </form>
       <IngredientsList ingredients={ingredients} generateRecipe={generateRecipe} />
+      {loading ? <div className="spinner-container"><div className="spinner"></div></div> : undefined}
       {recipeShown ? (
         <section>
           <h2>Chef Claude Recommends:</h2>
