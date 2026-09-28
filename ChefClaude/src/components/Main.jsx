@@ -16,8 +16,8 @@ export default function Main() {
 
   async function generateRecipe() {
     const ClaudeResponse = await getRecipeFromChefClaude(ingredients)
-    setRecipe((prevRecipe) => ClaudeResponse)
-    setRecipeShown((prevRecipeShown) => true)
+    setRecipe(ClaudeResponse)
+    setRecipeShown(true)
   }
 
   return (
