@@ -1,6 +1,8 @@
 import { useState } from "react"
 export default function Main() {  
 
+// intialized state for memes
+
 const [meme, setMeme] = useState({
     topText: "One Does Not DOOMSDAY",
     bottomText: "Walk into ENDGAME",
