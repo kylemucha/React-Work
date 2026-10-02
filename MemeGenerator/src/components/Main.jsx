@@ -4,8 +4,8 @@ export default function Main() {
 // intialized state for memes
 
 const [meme, setMeme] = useState({
-    topText: "One Does Not DOOMSDAY",
-    bottomText: "Walk into ENDGAME",
+    topText: "What is this...",
+    bottomText: "Some kind of Endgame?",
     imageURL: "http://i.imgflip.com/1bij.jpg"
 })
 
