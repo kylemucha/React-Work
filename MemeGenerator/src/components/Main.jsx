@@ -1,7 +1,7 @@
 import { useState } from "react"
 export default function Main() {  
 
-// intialized state for memes
+// intialized state for memes and changed pre-text
 
 const [meme, setMeme] = useState({
     topText: "What is this...",
