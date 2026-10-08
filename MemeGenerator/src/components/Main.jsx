@@ -1,7 +1,7 @@
 import { useState } from "react"
 export default function Main() {  
 
-// state for meme
+// state for meme and setting meme
 
 const [meme, setMeme] = useState({
     topText: "What is this...",
