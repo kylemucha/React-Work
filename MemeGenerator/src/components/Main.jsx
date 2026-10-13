@@ -10,11 +10,11 @@ const [meme, setMeme] = useState({
 })
 
 function handleChange(event) {
-    const {value} = event.currentTarget
+    const {value, name} = event.currentTarget
 
     setMeme((prevMeme) => ({
         ...prevMeme,
-        topText: value
+        [name]: value
     }))
 }
 
