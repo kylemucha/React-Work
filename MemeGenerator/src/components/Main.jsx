@@ -11,7 +11,6 @@ export default function Main() {
   const [memeList, setMemeList] = useState([]);
 
 
-
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((result) => result.json())
@@ -30,7 +29,6 @@ export default function Main() {
   function handleClick() {
     const curr = Math.floor(Math.random() * memeList.length);
     const newMeme = memeList[curr].url
-    console.log(newMeme)
     setMeme((prevMeme) => ({
         ...prevMeme,
         imageURL: newMeme
