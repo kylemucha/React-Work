@@ -8,6 +8,21 @@ export default function Main() {
   const [recipeShown, setRecipeShown] = React.useState(false);
   const [recipe, setRecipe] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const recipeSection = React.useRef(null);
+
+  /**
+     * Challenge:
+     * Add a new effect that calls `recipeSection.current.scrollIntoView()`
+     * only if recipe is not an empty string and recipeSection.current is not null.
+     * Think carefully about what value(s) you would want to include in
+     * the dependencies array.
+  */
+
+  React.useEffect(() => {
+    if(recipe !== "") {
+      recipeSection.current?.scrollIntoView();
+    }
+  }, [recipe])
 
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
@@ -36,6 +51,7 @@ export default function Main() {
         </button>
       </form>
       <IngredientsList
+        ref={recipeSection}
         ingredients={ingredients}
         generateRecipe={generateRecipe}
       />

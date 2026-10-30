@@ -13,7 +13,7 @@ export default function IngredientsList(props) {
       ) : undefined}
       {props.ingredients.length > 3 ? (
         <section className="generate-recipe-section">
-          <div className="generate-recipe-text">
+          <div ref={props.ref} className="generate-recipe-text">
             <p className="generate-recipe-toptext">Ready for a recipe?</p>
             <p className="generate-recipe-bottomtext">
               Generate a recipe from your list of ingredients.
