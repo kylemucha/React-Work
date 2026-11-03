@@ -13,7 +13,7 @@ export default function Main() {
 
   React.useEffect(() => {
     if(recipe !== "") {
-      recipeSection.current?.scrollIntoView();
+      recipeSection.current?.scrollIntoView({behavior: "smooth"});
     }
   }, [recipe])
 
