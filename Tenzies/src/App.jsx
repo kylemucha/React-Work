@@ -1,39 +1,41 @@
 import Die from "./components/Die";
+import { useState, useEffect} from "react"
 
-/**
- * Challenge:
- *
- * - Create a Die component that takes a `value` prop. Should
- *   render a button with that value displayed.
- * - Render 10 instances of the Die component (manually)
- *      - Provide a number between 1-6 for the value on each
- *        for now
- * - Style the <main> and <Die> components
- *   to look like they do in the slide
- *      - Hints: Create a container to hold the 10 instances
- *        of the Die component, and use CSS Grid to lay them
- *        out evenly in 2 rows of 5 columns
- *      - Use flexbox on main to center the dice container
- *        in the center of the page
- */
+    /**
+     * Challenge: Create a `Roll Dice` button that will re-roll
+     * all 10 dice
+     * 
+     * Clicking the button should generate a new array of numbers
+     * and set the `dice` state to that new array (thus re-rendering
+     * the array to the page)
+     */
 
 export default function App() {
+
+  const [dice, setDice] = useState(generateAllNewDice)
+
+  function generateAllNewDice() {
+    let numbers = [];
+    for (let i = 0; i < 10; i++) {
+      numbers.push(Math.floor(Math.random() * 6) + 1);
+    }
+    return numbers;
+  }
+
+  function handleClick() {
+    setDice(generateAllNewDice)
+  }
+
+  const diceElements = dice.map((num) => <Die value={num}/>)
+
   return (
-    <>
+    <main>
       <div className="game">
         <div className="die-grid">
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
-          <Die value={1} />
+          {diceElements}
         </div>
+        <button className="roll-button" onClick={handleClick}>Roll</button>
       </div>
-    </>
+    </main>
   );
 }

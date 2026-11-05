@@ -3,6 +3,7 @@
 }
 
 body {
+    font-family: "Karla", sans-serif;
     display: flex;
     margin: 0;
     background-color: #0B2434;
@@ -14,6 +15,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 25px;
     background-color: #F5F5F5;
     width: 400px;
     height: 400px;
@@ -36,8 +39,24 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 3.81px;
-    font-family: "Karla", sans-serif;
     font-weight: bold;
     font-size: 20.59;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.roll-button {
+    all: unset;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5035FF;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16.38;
+    width: 92px;
+    height: 36px;
+    border-radius: 3.81px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
