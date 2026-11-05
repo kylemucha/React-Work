@@ -1,7 +1,7 @@
-export default function Die() {
-  return(
-    <>
-      <h1>Hello</h1>
-    </>
-  )
+export default function Die(props) {
+  return (
+    <button className="die">
+      {props.value}
+    </button>
+  );
 }
