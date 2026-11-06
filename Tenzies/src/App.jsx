@@ -1,19 +1,6 @@
 import Die from "./components/Die";
 import { useState } from "react";
-import { nanoid } from "nanoid"
-
-    /**
-     * Challenge: Create a function `hold` that takes
-     * `id` as a parameter. For now, just have the function
-     * console.log(id).
-     * 
-     * Then, figure out how to pass that function down to each
-     * instance of the Die component so when each one is clicked,
-     * it logs its own unique ID property. (Hint: there's more
-     * than one way to make that work, so just choose whichever
-     * you want)
-     * 
-     */
+import { nanoid } from "nanoid";
 
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice);
@@ -21,29 +8,52 @@ export default function App() {
   function generateAllNewDice() {
     let numbers = [];
     for (let i = 0; i < 10; i++) {
-      numbers.push({ value: Math.floor(Math.random() * 6) + 1, isHeld: false, id: nanoid()});
+      numbers.push({
+        value: Math.floor(Math.random() * 6) + 1,
+        isHeld: false,
+        id: nanoid(),
+      });
     }
     console.log(numbers);
     return numbers;
   }
-
-  function handleClick() {
-    setDice(generateAllNewDice);
+  function rollDice() {
+    setDice((prevDice) =>
+      prevDice.map((die) => {
+        return die.isHeld === false
+          ? { ...die, value: Math.floor(Math.random() * 6) + 1 }
+          : die;
+      }),
+    );
   }
 
   function hold(id) {
-    console.log(id);
+    setDice((prevDice) =>
+      prevDice.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      }),
+    );
   }
 
   const diceElements = dice.map((obj) => (
-    <Die key={obj.id} value={obj.value} isHeld={obj.isHeld} holdFunc={() => hold(obj.id)}/>
+    <Die
+      key={obj.id}
+      value={obj.value}
+      isHeld={obj.isHeld}
+      hold={() => hold(obj.id)}
+    />
   ));
 
   return (
     <main>
       <div className="game">
+        <h1>Tenzies</h1>
+        <p>
+          Roll until all dice are the same. Click each die to freeze it at its
+          current value between roles.
+        </p>
         <div className="die-grid">{diceElements}</div>
-        <button className="roll-button" onClick={handleClick}>
+        <button className="roll-button" onClick={rollDice}>
           Roll
         </button>
       </div>
