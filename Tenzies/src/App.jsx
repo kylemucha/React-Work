@@ -1,9 +1,14 @@
 import Die from "./components/Die";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 export default function App() {
-  const [dice, setDice] = useState(generateAllNewDice);
+  // const { width, height } = useWindowSize()
+  const [dice, setDice] = useState(() => generateAllNewDice());
+  const gameWon =
+    dice.every((die) => die.isHeld === true) &&
+    dice.every((die) => die.value === dice[0].value);
 
   function generateAllNewDice() {
     let numbers = [];
@@ -35,6 +40,10 @@ export default function App() {
     );
   }
 
+  function newGame() {
+    window.location.reload();
+  }
+
   const diceElements = dice.map((obj) => (
     <Die
       key={obj.id}
@@ -46,6 +55,7 @@ export default function App() {
 
   return (
     <main>
+      {gameWon ? <Confetti /> : undefined}
       <div className="game">
         <h1>Tenzies</h1>
         <p>
@@ -54,7 +64,7 @@ export default function App() {
         </p>
         <div className="die-grid">{diceElements}</div>
         <button className="roll-button" onClick={rollDice}>
-          Roll
+          {gameWon ? "New Game?" : "Roll"}
         </button>
       </div>
     </main>
