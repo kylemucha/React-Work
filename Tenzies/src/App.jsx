@@ -49,7 +49,7 @@ export default function App() {
       <div className="game">
         <h1>Tenzies</h1>
         <p>
-          You Roll until all dice are the same. Click each die to freeze it at its
+          Roll until all dice are the same. Click each die to freeze it at its
           current value between roles.
         </p>
         <div className="die-grid">{diceElements}</div>
