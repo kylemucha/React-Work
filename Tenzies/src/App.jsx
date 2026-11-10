@@ -26,7 +26,6 @@ export default function App() {
         id: nanoid(),
       });
     }
-    console.log(numbers);
     return numbers;
   }
   function rollDice() {
