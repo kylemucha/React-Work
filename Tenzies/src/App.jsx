@@ -41,7 +41,7 @@ export default function App() {
   }
 
   function newGame() {
-    window.location.reload();
+    setDice(() => generateAllNewDice());
   }
 
   const diceElements = dice.map((obj) => (
@@ -63,8 +63,8 @@ export default function App() {
           current value between roles.
         </p>
         <div className="die-grid">{diceElements}</div>
-        <button className="roll-button" onClick={rollDice}>
-          {gameWon ? "New Game?" : "Roll"}
+        <button className="roll-button" onClick={() => (gameWon ? newGame() : rollDice())}>
+          {gameWon ? "New Game" : "Roll"}
         </button>
       </div>
     </main>
