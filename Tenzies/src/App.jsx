@@ -1,14 +1,21 @@
 import Die from "./components/Die";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 
 export default function App() {
-  // const { width, height } = useWindowSize()
   const [dice, setDice] = useState(() => generateAllNewDice());
+  const buttonRef = useRef(null);
+
   const gameWon =
     dice.every((die) => die.isHeld === true) &&
     dice.every((die) => die.value === dice[0].value);
+
+  useEffect(() => {
+    if (gameWon) {
+      buttonRef.current.focus();
+    }
+  }, [gameWon]);
 
   function generateAllNewDice() {
     let numbers = [];
@@ -56,6 +63,11 @@ export default function App() {
   return (
     <main>
       {gameWon ? <Confetti /> : undefined}
+      <div aria-live="polite" className="sr-only">
+        {gameWon && (
+          <p>Congratulations! You won! Press "New Game" to start again.</p>
+        )}
+      </div>
       <div className="game">
         <h1>Tenzies</h1>
         <p>
@@ -63,7 +75,11 @@ export default function App() {
           current value between roles.
         </p>
         <div className="die-grid">{diceElements}</div>
-        <button className="roll-button" onClick={() => (gameWon ? newGame() : rollDice())}>
+        <button
+          ref={buttonRef}
+          className="roll-button"
+          onClick={() => (gameWon ? newGame() : rollDice())}
+        >
           {gameWon ? "New Game" : "Roll"}
         </button>
       </div>
