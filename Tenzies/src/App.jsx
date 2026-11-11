@@ -1,4 +1,5 @@
 import Die from "./components/Die";
+import LeaderboardName from "./components/LeaderboardName";
 import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
@@ -64,9 +65,21 @@ export default function App() {
     event.preventDefault();
     setLeaders((prevLeaders) => [
       ...prevLeaders,
-      { playerName: player, playerScore: count },
+      { id: nanoid(), playerName: player, playerScore: count },
     ]);
+    setPlayer("");
+    newGame();
   }
+
+  const leaderboardNames = leaders
+    .toSorted((a, b) => a.playerScore - b.playerScore)
+    .map((leader) => (
+      <LeaderboardName
+        key={leader.id}
+        playerName={leader.playerName}
+        playerScore={leader.playerScore}
+      />
+    ));
 
   const diceElements = dice.map((obj) => (
     <Die
@@ -79,42 +92,52 @@ export default function App() {
 
   return (
     <main>
-      {gameWon ? (
-        <div className="player">
-          <form onSubmit={handleSubmit}>
-            <label>Enter Player Name:</label>
-            <input
-              type="text"
-              placeholder="Player 1"
-              name="player"
-              value={player}
-              onChange={handleChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
+      <div className="game-with-leaders">
+        {leaders.length !== 0 ? (
+          <div className="leaderboard">
+            <h2>Leaderboard</h2>
+            <ol>{leaderboardNames}</ol>
+          </div>
+        ) : undefined}
+        <div className="form-and-game">
+          {gameWon ? (
+            <div className="player">
+              <form onSubmit={handleSubmit}>
+                <label>Enter Player Name:</label>
+                <input
+                  type="text"
+                  placeholder="Player 1"
+                  name="player"
+                  value={player}
+                  onChange={handleChange}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          ) : undefined}
+          {gameWon ? <Confetti /> : undefined}
+          <div aria-live="polite" className="sr-only">
+            {gameWon && (
+              <p>Congratulations! You won! Press "New Game" to start again.</p>
+            )}
+          </div>
+          <div className="game">
+            <h1>Tenzies</h1>
+            <p>
+              Roll until all dice are the same. Click each die to freeze it at
+              its current value between roles.
+            </p>
+            <div className="die-grid">{diceElements}</div>
+            <button
+              ref={buttonRef}
+              className="roll-button"
+              onClick={() => (gameWon ? newGame() : rollDice())}
+            >
+              {gameWon ? "New Game" : "Roll"}
+            </button>
+            <div className="counter">Roll Count: {count}</div>
+          </div>
         </div>
-      ) : undefined}
-      {gameWon ? <Confetti /> : undefined}
-      <div aria-live="polite" className="sr-only">
-        {gameWon && (
-          <p>Congratulations! You won! Press "New Game" to start again.</p>
-        )}
-      </div>
-      <div className="game">
-        <h1>Tenzies</h1>
-        <p>
-          Roll until all dice are the same. Click each die to freeze it at its
-          current value between roles.
-        </p>
-        <div className="die-grid">{diceElements}</div>
-        <button
-          ref={buttonRef}
-          className="roll-button"
-          onClick={() => (gameWon ? newGame() : rollDice())}
-        >
-          {gameWon ? "New Game" : "Roll"}
-        </button>
-        <div className="counter">Roll Count: {count}</div>
       </div>
     </main>
   );
