@@ -5,6 +5,9 @@ import Confetti from "react-confetti";
 
 export default function App() {
   const [dice, setDice] = useState(() => generateAllNewDice());
+  const [count, setCount] = useState(0);
+  const [player, setPlayer] = useState("");
+  const [leaders, setLeaders] = useState([]);
   const buttonRef = useRef(null);
 
   const gameWon =
@@ -36,6 +39,7 @@ export default function App() {
           : die;
       }),
     );
+    setCount((prevCount) => prevCount + 1);
   }
 
   function hold(id) {
@@ -48,6 +52,20 @@ export default function App() {
 
   function newGame() {
     setDice(() => generateAllNewDice());
+    setCount((prevCount) => 0);
+  }
+
+  function handleChange(event) {
+    const { value } = event.currentTarget;
+    setPlayer(value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setLeaders((prevLeaders) => [
+      ...prevLeaders,
+      { playerName: player, playerScore: count },
+    ]);
   }
 
   const diceElements = dice.map((obj) => (
@@ -61,6 +79,21 @@ export default function App() {
 
   return (
     <main>
+      {gameWon ? (
+        <div className="player">
+          <form onSubmit={handleSubmit}>
+            <label>Enter Player Name:</label>
+            <input
+              type="text"
+              placeholder="Player 1"
+              name="player"
+              value={player}
+              onChange={handleChange}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      ) : undefined}
       {gameWon ? <Confetti /> : undefined}
       <div aria-live="polite" className="sr-only">
         {gameWon && (
@@ -81,6 +114,7 @@ export default function App() {
         >
           {gameWon ? "New Game" : "Roll"}
         </button>
+        <div className="counter">Roll Count: {count}</div>
       </div>
     </main>
   );
