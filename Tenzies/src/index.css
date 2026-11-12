@@ -111,11 +111,14 @@ form {
 .leaderboard {
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 200px;
+  position: fixed;
+  top: 30;
+  right: 10;
+  height: 250px;
+  width: 175px;
   background-color: beige;
   color: #2b283a;
-  border-radius: 3.81px;
+  border-radius: 15px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   margin-right: 20px;
 }
@@ -124,6 +127,12 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: underline;
+}
+
+.leaderboard > ol {
+  font-size: 20px;
+  margin-top: 0;
 }
 
 .form-and-game {
@@ -131,9 +140,4 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.game-with-leaders {
-  display: flex;
-  flex-direction: row;
 }
