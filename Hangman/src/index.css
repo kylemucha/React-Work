@@ -89,11 +89,34 @@ span {
 }
 
 .allies {
-  margin-top: 114px;
+  margin-top: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 270px;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 64px;
+  max-width: 600px;
+}
+
+.keyboard-button {
+  all: unset;
+  background-color: #FCBA29;
+  color: #1E1E1E;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: 1px solid white;
+  margin: 8px;
 }
