@@ -10,6 +10,15 @@ body {
   padding: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 h1 {
@@ -24,6 +33,19 @@ h2 {
   font-weight: normal;
   color: #8E8E8E;
   margin-top: 4px;
+}
+
+span {
+  display: inline-block;
+  color: #F9F4DA;
+  background-color: #323232;
+  font-size: 18px;
+  padding: 8px;
+  margin: 36px 2px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #F9F4DA
 }
 
 .header {
@@ -60,7 +82,9 @@ h2 {
   justify-content: center;
   align-items: center;
   height: 35px;
-  width: 150px;
+  width: auto;
+  padding: 12px;
+  margin: 2px 1px;
   border-radius: 7px;
 }
 
@@ -69,7 +93,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 352px;
+  max-width: 270px;
   flex-direction: row;
   flex-wrap: wrap;
 }
