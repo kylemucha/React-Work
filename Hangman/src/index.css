@@ -119,4 +119,5 @@ span {
   border-radius: 5px;
   outline: 1px solid white;
   margin: 8px;
+  cursor: pointer;
 }
