@@ -11,8 +11,6 @@ export default function App() {
   const [guessed, setGuessed] = useState([]);
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-  console.log(guessed);
-
   function populateAllies() {
     return avengers.map((hero) => {
       return (
