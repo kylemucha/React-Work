@@ -7,7 +7,10 @@ import AvengerTile from "./components/AvengerTile";
 export default function App() {
   const [allies, setAllies] = useState(() => populateAllies());
   const [currentWord, setCurrentWord] = useState("React");
+  const [guessed, setGuessed] = useState([]);
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  console.log(guessed);
 
   function populateAllies() {
     return avengers.map((hero) => {
@@ -22,15 +25,27 @@ export default function App() {
     });
   }
 
-  const populatedWord = [...currentWord]
-    .map((letter, index) => {
-        return <span key={index}>{letter.toUpperCase()}</span>;
-    })
+  const populatedWord = [...currentWord].map((letter, index) => {
+    return <span key={index}>{letter.toUpperCase()}</span>;
+  });
 
-    const populateKeyboard = [...alphabet]
-    .map((letter) => {
-        return <button className="keyboard-button" key={letter}>{letter.toUpperCase()}</button>
-    })
+  const populateKeyboard = [...alphabet].map((letter) => {
+    return (
+      <button
+        className="keyboard-button"
+        key={letter}
+        onClick={() => handleClick(letter)}
+      >
+        {letter.toUpperCase()}
+      </button>
+    );
+  });
+
+  function handleClick(letter) {
+    setGuessed((prevGuessed) => {
+      ([...prevGuessed], letter);
+    });
+  }
 
   return (
     <main>
