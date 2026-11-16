@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { avengers } from "../avengers";
+import { clsx } from "clsx";
 import Header from "./components/Header";
 import Status from "./components/Status";
 import AvengerTile from "./components/AvengerTile";
@@ -32,13 +33,14 @@ export default function App() {
   const populateKeyboard = [...alphabet].map((letter) => {
     return (
       <button
-        className={
-          guessed.includes(letter) && currentWord.includes(letter)
-            ? "keyboard-button-correct"
-            : guessed.includes(letter) && !currentWord.includes(letter)
-              ? "keyboard-button-wrong"
-              : "keyboard-button-neutral"
-        }
+        className={clsx({
+          "keyboard-button-neutral": !guessed.includes(letter),
+          "keyboard-button-correct":
+            guessed.includes(letter) && currentWord.includes(letter),
+          "keyboard-button-wrong":
+            guessed.includes(letter) && !currentWord.includes(letter),
+        })}
+
         key={letter}
         onClick={() => handleClick(letter)}
       >
