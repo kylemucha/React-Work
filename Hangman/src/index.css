@@ -24,20 +24,20 @@ main {
 h1 {
   font-size: 20px;
   font-weight: normal;
-  color: #F9F4DA;
+  color: #f9f4da;
 }
 
 h2 {
   display: flex;
   font-size: 14px;
   font-weight: normal;
-  color: #8E8E8E;
+  color: #8e8e8e;
   margin-top: 4px;
 }
 
 span {
   display: inline-block;
-  color: #F9F4DA;
+  color: #f9f4da;
   background-color: #323232;
   font-size: 18px;
   padding: 8px;
@@ -45,7 +45,7 @@ span {
   width: 40px;
   height: 40px;
   text-align: center;
-  border-bottom: 1px solid #F9F4DA
+  border-bottom: 1px solid #f9f4da;
 }
 
 .header {
@@ -66,7 +66,7 @@ span {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #10A95B;
+  background-color: #10a95b;
   width: 352px;
   height: 59px;
   margin-top: 20px;
@@ -107,10 +107,40 @@ span {
   max-width: 600px;
 }
 
-.keyboard-button {
+.keyboard-button-neutral {
   all: unset;
-  background-color: #FCBA29;
-  color: #1E1E1E;
+  background-color: #fcba29;
+  color: #1e1e1e;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: 1px solid white;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.keyboard-button-correct {
+  all: unset;
+  background-color: #10A95B;
+  color: #1e1e1e;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: 1px solid white;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.keyboard-button-wrong {
+  all: unset;
+  background-color: #EC5D49;
+  color: #1e1e1e;
   text-align: center;
   height: 40px;
   width: 40px;

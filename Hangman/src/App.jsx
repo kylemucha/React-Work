@@ -6,7 +6,7 @@ import AvengerTile from "./components/AvengerTile";
 
 export default function App() {
   const [allies, setAllies] = useState(() => populateAllies());
-  const [currentWord, setCurrentWord] = useState("React");
+  const [currentWord, setCurrentWord] = useState("react");
   const [guessed, setGuessed] = useState([]);
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -32,7 +32,13 @@ export default function App() {
   const populateKeyboard = [...alphabet].map((letter) => {
     return (
       <button
-        className="keyboard-button"
+        className={
+          guessed.includes(letter) && currentWord.includes(letter)
+            ? "keyboard-button-correct"
+            : guessed.includes(letter) && !currentWord.includes(letter)
+              ? "keyboard-button-wrong"
+              : "keyboard-button-neutral"
+        }
         key={letter}
         onClick={() => handleClick(letter)}
       >
