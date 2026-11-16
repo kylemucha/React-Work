@@ -42,9 +42,9 @@ export default function App() {
   });
 
   function handleClick(letter) {
-    setGuessed((prevGuessed) => {
-      ([...prevGuessed], letter);
-    });
+    setGuessed((prevGuessed) =>
+      prevGuessed.includes(letter) ? prevGuessed : [...prevGuessed, letter],
+    );
   }
 
   return (
