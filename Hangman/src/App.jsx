@@ -25,7 +25,13 @@ export default function App() {
   }
 
   const populatedWord = [...currentWord].map((letter, index) => {
-    return <span key={index}>{letter.toUpperCase()}</span>;
+    return (
+      <span key={index}>
+        {guessed.includes(letter) && currentWord.includes(letter)
+          ? letter.toUpperCase()
+          : ""}
+      </span>
+    );
   });
 
   const populateKeyboard = [...alphabet].map((letter) => {
@@ -38,7 +44,6 @@ export default function App() {
           "keyboard-button-wrong":
             guessed.includes(letter) && !currentWord.includes(letter),
         })}
-
         key={letter}
         onClick={() => handleClick(letter)}
       >
@@ -58,7 +63,7 @@ export default function App() {
       <Header />
       <Status />
       <div className="allies">{allies}</div>
-      <div>{populatedWord}</div>
+      <div className="word">{populatedWord}</div>
       <div className="keyboard">{populateKeyboard}</div>
     </main>
   );
