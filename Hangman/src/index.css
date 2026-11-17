@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
   box-sizing: border-box;
 }
@@ -79,6 +81,7 @@ span {
 
 .avenger-tile {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   height: 35px;
@@ -86,6 +89,18 @@ span {
   padding: 12px;
   margin: 2px 1px;
   border-radius: 7px;
+}
+
+.avenger-tile-dead::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  inset: 0;
+  border-radius: inherit;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .allies {
@@ -124,7 +139,7 @@ span {
 
 .keyboard-button-correct {
   all: unset;
-  background-color: #10A95B;
+  background-color: #10a95b;
   color: #1e1e1e;
   text-align: center;
   height: 40px;
@@ -139,7 +154,7 @@ span {
 
 .keyboard-button-wrong {
   all: unset;
-  background-color: #EC5D49;
+  background-color: #ec5d49;
   color: #1e1e1e;
   text-align: center;
   height: 40px;
