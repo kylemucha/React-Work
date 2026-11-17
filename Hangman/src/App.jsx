@@ -6,9 +6,19 @@ import Status from "./components/Status";
 import AvengerTile from "./components/AvengerTile";
 
 export default function App() {
+  // state values
   const [allies, setAllies] = useState(() => populateAllies());
   const [currentWord, setCurrentWord] = useState("react");
   const [guessed, setGuessed] = useState([]);
+
+  //derived values
+  const wrongGuessCount = guessed.filter((letter, length) => {
+    return !currentWord.includes(letter);
+  }).length;
+
+  console.log(wrongGuessCount);
+
+  //static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   function populateAllies() {
@@ -29,7 +39,7 @@ export default function App() {
       <span key={index}>
         {guessed.includes(letter) && currentWord.includes(letter)
           ? letter.toUpperCase()
-          : ""}
+          : undefined}
       </span>
     );
   });
