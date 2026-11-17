@@ -6,7 +6,7 @@ export default function AvengerTile(props) {
     }
 
     return(
-        <div className="avenger-tile avenger-tile-dead" style={styles}>
+        <div className={props.dead ? "avenger-tile-dead" : "avenger-tile"} style={styles}>
             {props.name}
         </div>
     )

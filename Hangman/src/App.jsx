@@ -12,11 +12,11 @@ export default function App() {
   const [guessed, setGuessed] = useState([]);
 
   //derived values
-  const wrongGuessCount = guessed.filter((letter, length) => {
+  const wrongGuessCount = guessed.filter((letter) => {
     return !currentWord.includes(letter);
   }).length;
 
-  console.log(wrongGuessCount);
+
 
   //static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -29,6 +29,7 @@ export default function App() {
           name={hero.name}
           backgroundColor={hero.backgroundColor}
           color={hero.color}
+          dead={hero.dead}
         />
       );
     });
