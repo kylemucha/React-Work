@@ -84,7 +84,7 @@ span {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #BA2A2A;
+  background-color: #ba2a2a;
   width: 352px;
   height: 59px;
   margin-top: 20px;
@@ -92,6 +92,23 @@ span {
 }
 
 .lose-status p {
+  margin: 0;
+}
+
+.playing-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #7a5ea7;
+  width: auto;
+  padding: 15px;
+  height: 59px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.playing-status {
   margin: 0;
 }
 
@@ -136,6 +153,11 @@ span {
   flex-wrap: wrap;
   margin-top: 64px;
   max-width: 600px;
+}
+
+.keyboard > button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .keyboard-button-neutral {
@@ -196,8 +218,9 @@ span {
   width: 228px;
   height: 40px;
   text-align: center;
-  background-color: #11B5E5;
-  color: #1E1E1E;
+  background-color: #11b5e5;
+  color: #1e1e1e;
   border-radius: 5px;
-  outline: #D7D7D7 solid 1px;
+  outline: #d7d7d7 solid 1px;
+  cursor: pointer;
 }
