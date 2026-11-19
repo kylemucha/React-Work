@@ -4,6 +4,15 @@ import { clsx } from "clsx";
 import Header from "./components/Header";
 import AvengerTile from "./components/AvengerTile";
 
+/** 
+ * features to add
+ * - farewell messages in status section
+ * - fix a11y issues
+ * - make new game button work
+ * - choose a random word instead of a set word
+ * - confetti drop on win
+*/
+
 export default function App() {
   // state variables
   const [currentWord, setCurrentWord] = useState("react");
@@ -82,22 +91,29 @@ export default function App() {
     );
   }
 
+  function renderGameStatus() {
+    if(!isGameOver) {
+      return null
+    } 
+    if(isGameWon) {
+      return (<div className="win-status">
+          <p>You win!</p>
+          <p>Well done!</p>
+        </div>)
+    } else if(isGameLost)  {
+      return (<div className="lose-status">
+          <p>You Lose!</p>
+          <p>All hail DR. DOOM!</p>
+        </div>)
+    }
+  }
+
   function handleNewGame() {}
 
   return (
     <main>
       <Header />
-      {isGameWon ? (
-        <div className="win-status">
-          <p>You win!</p>
-          <p>Well done!</p>
-        </div>
-      ) : isGameLost ? (
-        <div className="lose-status">
-          <p>You Lose!</p>
-          <p>All hail DR. DOOM!</p>
-        </div>
-      ) : undefined}
+      {renderGameStatus()}
       <div className="allies">{populateAllies()}</div>
       <div className="word">{populatedWord}</div>
       <div className="keyboard">{populateKeyboard}</div>
