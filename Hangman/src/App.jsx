@@ -21,8 +21,8 @@ export default function App() {
   function populateAllies() {
     return avengers.map((hero, index) => {
 
-
-    console.log(hero.name, hero.dead)
+    
+    console.log(hero.name, index >= wrongGuessCount ? hero.dead : true)
       return (
         <AvengerTile
           key={hero.name}
@@ -34,6 +34,8 @@ export default function App() {
       );
     });
   }
+
+  console.log("------------")
 
   const populatedWord = [...currentWord].map((letter, index) => {
     return (
