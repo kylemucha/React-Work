@@ -173,3 +173,15 @@ span {
   align-items: center;
   flex-direction: row;
 }
+
+.new-game {
+  all: unset;
+  margin-top: 36px;
+  width: 228px;
+  height: 40px;
+  text-align: center;
+  background-color: #11B5E5;
+  color: #1E1E1E;
+  border-radius: 5px;
+  outline: #D7D7D7 solid 1px;
+}

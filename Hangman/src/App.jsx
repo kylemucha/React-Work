@@ -15,27 +15,32 @@ export default function App() {
     return !currentWord.includes(letter);
   }).length;
 
+  const isGameWon = currentWord
+    .split("")
+    .every((letter) => guessed.includes(letter));
+
+  const isGameLost = wrongGuessCount >= avengers.length - 1;
+
+  const isGameOver = isGameWon === true || isGameLost === true;
+
+  console.log("is won", isGameWon, "is lost" , isGameLost, "is over" , isGameOver)
+
   //static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   function populateAllies() {
     return avengers.map((hero, index) => {
-
-    
-    console.log(hero.name, index >= wrongGuessCount ? hero.dead : true)
       return (
         <AvengerTile
           key={hero.name}
           name={hero.name}
           backgroundColor={hero.backgroundColor}
           color={hero.color}
-          dead= {index >= wrongGuessCount ? hero.dead : true}
+          dead={index >= wrongGuessCount ? hero.dead : true}
         />
       );
     });
   }
-
-  console.log("------------")
 
   const populatedWord = [...currentWord].map((letter, index) => {
     return (
@@ -71,6 +76,8 @@ export default function App() {
     );
   }
 
+  function handleNewGame() {}
+
   return (
     <main>
       <Header />
@@ -78,6 +85,11 @@ export default function App() {
       <div className="allies">{populateAllies()}</div>
       <div className="word">{populatedWord}</div>
       <div className="keyboard">{populateKeyboard}</div>
+      {isGameOver && (
+        <button className="new-game" onClick={handleNewGame}>
+          New Game
+        </button>
+      )}
     </main>
   );
 }

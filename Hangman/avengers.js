@@ -50,7 +50,7 @@ export const avengers = [
     {
         name: "DOOM",
         backgroundColor: "#136709ff",
-        color: "#000000ff",
+        color: "#debc12ff",
         dead: false
     },
 ]
