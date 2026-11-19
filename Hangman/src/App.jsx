@@ -7,7 +7,6 @@ import AvengerTile from "./components/AvengerTile";
 
 export default function App() {
   // state values
-  const [allies, setAllies] = useState(() => populateAllies());
   const [currentWord, setCurrentWord] = useState("react");
   const [guessed, setGuessed] = useState([]);
 
@@ -16,20 +15,21 @@ export default function App() {
     return !currentWord.includes(letter);
   }).length;
 
-
-
   //static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   function populateAllies() {
-    return avengers.map((hero) => {
+    return avengers.map((hero, index) => {
+
+
+    console.log(hero.name, hero.dead)
       return (
         <AvengerTile
           key={hero.name}
           name={hero.name}
           backgroundColor={hero.backgroundColor}
           color={hero.color}
-          dead={hero.dead}
+          dead= {index >= wrongGuessCount ? hero.dead : true}
         />
       );
     });
@@ -73,7 +73,7 @@ export default function App() {
     <main>
       <Header />
       <Status />
-      <div className="allies">{allies}</div>
+      <div className="allies">{populateAllies()}</div>
       <div className="word">{populatedWord}</div>
       <div className="keyboard">{populateKeyboard}</div>
     </main>

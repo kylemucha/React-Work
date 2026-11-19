@@ -94,13 +94,13 @@ span {
 .avenger-tile-dead::before {
   content: "💀";
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
   inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: inherit;
   background-color: rgba(0, 0, 0, 0.7);
+  font-size: 0.85rem;
 }
 
 .allies {
