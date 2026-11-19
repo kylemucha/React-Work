@@ -63,7 +63,7 @@ span {
   text-align: center;
 }
 
-.status {
+.win-status {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +75,23 @@ span {
   border-radius: 5px;
 }
 
-.status > p {
+.win-status p {
+  margin: 0;
+}
+
+.lose-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #BA2A2A;
+  width: 352px;
+  height: 59px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.lose-status p {
   margin: 0;
 }
 

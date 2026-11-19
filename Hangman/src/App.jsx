@@ -2,7 +2,6 @@ import { useState } from "react";
 import { avengers } from "../avengers";
 import { clsx } from "clsx";
 import Header from "./components/Header";
-import Status from "./components/Status";
 import AvengerTile from "./components/AvengerTile";
 
 export default function App() {
@@ -23,7 +22,14 @@ export default function App() {
 
   const isGameOver = isGameWon === true || isGameLost === true;
 
-  console.log("is won", isGameWon, "is lost" , isGameLost, "is over" , isGameOver)
+  console.log(
+    "is won",
+    isGameWon,
+    "is lost",
+    isGameLost,
+    "is over",
+    isGameOver,
+  );
 
   //static variables
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -81,7 +87,17 @@ export default function App() {
   return (
     <main>
       <Header />
-      <Status />
+      {isGameWon ? (
+        <div className="win-status">
+          <p>You win!</p>
+          <p>Well done!</p>
+        </div>
+      ) : isGameLost ? (
+        <div className="lose-status">
+          <p>You Lose!</p>
+          <p>All hail DR. DOOM!</p>
+        </div>
+      ) : undefined}
       <div className="allies">{populateAllies()}</div>
       <div className="word">{populatedWord}</div>
       <div className="keyboard">{populateKeyboard}</div>
