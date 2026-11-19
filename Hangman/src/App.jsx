@@ -6,11 +6,11 @@ import Status from "./components/Status";
 import AvengerTile from "./components/AvengerTile";
 
 export default function App() {
-  // state values
+  // state variables
   const [currentWord, setCurrentWord] = useState("react");
   const [guessed, setGuessed] = useState([]);
 
-  //derived values
+  //derived variables
   const wrongGuessCount = guessed.filter((letter) => {
     return !currentWord.includes(letter);
   }).length;
@@ -25,7 +25,7 @@ export default function App() {
 
   console.log("is won", isGameWon, "is lost" , isGameLost, "is over" , isGameOver)
 
-  //static values
+  //static variables
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   function populateAllies() {
