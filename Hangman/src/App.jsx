@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { avengers } from "../avengers";
 import { getFarewellText, getWord } from "../utils";
 import { clsx } from "clsx";
@@ -33,6 +33,17 @@ export default function App() {
 
   //static variables
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if(!isGameOver && /^[a-z]$/i.test(event.key)) {
+        handleClick(event.key.toLowerCase());
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {window.removeEventListener("keydown", handleKeyDown)};
+  }, [isGameOver, guessed, currentWord, wrongGuessCount])
 
   function populateAllies() {
     return avengers.map((hero, index) => {
