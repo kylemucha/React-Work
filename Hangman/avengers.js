@@ -24,11 +24,11 @@ export const avengers = [
         backgroundColor: "#298EC6",
         color: "#F9F4DA"
     },
-    {
-        name: "Steve Rogers",
-        backgroundColor: "#ffffffff",
-        color: "#000000ff"
-    },
+    // {
+    //     name: "Steve Rogers",
+    //     backgroundColor: "#ffffffff",
+    //     color: "#000000ff"
+    // },
     {
         name: "Thor",
         backgroundColor: "#404040ff",
