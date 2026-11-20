@@ -3,7 +3,7 @@ export default function Header() {
     <div className="header">
       <h1>Hangman: Doomsday</h1>
       <h2>
-        Guess the word in under 8 attempts to keep the Avengers safe from Doom!
+        Guess the word in under 7 attempts to keep the Avengers safe from Doom!
       </h2>
     </div>
   );
