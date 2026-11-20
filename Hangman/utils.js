@@ -1,3 +1,6 @@
+import { words } from "./words"
+
+
 export function getFarewellText(avenger) {
     const options = [
         `${avenger} fell from a skyscraper 🏙️`, 
@@ -15,5 +18,6 @@ export function getFarewellText(avenger) {
     ];
 
     const randomIndex = Math.floor(Math.random() * options.length);
-    return options[randomIndex];
+    const word = words[randomIndex];
+    return (options[randomIndex]);
 }

@@ -7,7 +7,6 @@ import AvengerTile from "./components/AvengerTile";
 
 /**
  * features to add
- * - fix a11y issues
  * - choose a random word instead of a set word
  * - confetti drop on win
  */
