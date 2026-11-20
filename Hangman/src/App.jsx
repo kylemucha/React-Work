@@ -2,7 +2,7 @@ import { useState } from "react";
 import { avengers } from "../avengers";
 import { getFarewellText, getWord } from "../utils";
 import { clsx } from "clsx";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 import Header from "./components/Header";
 import AvengerTile from "./components/AvengerTile";
 import Confetti from "react-confetti";
@@ -126,7 +126,6 @@ export default function App() {
   }
   return (
     <main>
-      <Analytics />
       {isGameWon && <Confetti />}
       <Header />
       <div aria-live="polite" role="status">
@@ -159,6 +158,7 @@ export default function App() {
           New Game
         </button>
       )}
+      <Analytics />
     </main>
   );
 }
