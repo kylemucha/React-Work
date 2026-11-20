@@ -236,3 +236,7 @@ span {
   white-space: nowrap;
   border: 0;
 }
+
+.letter-wrong {
+  color: #EC5D49;
+}

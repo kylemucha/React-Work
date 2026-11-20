@@ -48,8 +48,13 @@ export default function App() {
 
   const populatedWord = [...currentWord].map((letter, index) => {
     return (
-      <span key={index}>
-        {guessed.includes(letter) && currentWord.includes(letter)
+      <span
+        key={index}
+        className={clsx({
+          "letter-wrong": !guessed.includes(letter) && isGameOver,
+        })}
+      >
+        {guessed.includes(letter) || isGameOver
           ? letter.toUpperCase()
           : undefined}
       </span>
