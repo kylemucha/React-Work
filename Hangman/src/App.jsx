@@ -22,15 +22,14 @@ export default function App() {
   const wrongGuessCount = guessed.filter((letter) => {
     return !currentWord.includes(letter);
   }).length;
-
+  const guessesLeft = avengers.length - 1;
   const isGameWon = currentWord
     .split("")
     .every((letter) => guessed.includes(letter));
-
-  const isGameLost = wrongGuessCount >= avengers.length - 1;
-
+  const isGameLost = wrongGuessCount >= guessesLeft;
   const isGameOver = isGameWon || isGameLost;
-
+  const lastGuessedLetter = guessed[guessed.length - 1];
+  
   //static variables
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -70,6 +69,8 @@ export default function App() {
         })}
         key={letter}
         disabled={isGameOver}
+        aria-disabled={guessed.includes(letter)}
+        aria-label={`Letter ${letter}`}
         onClick={() => handleClick(letter)}
       >
         {letter.toUpperCase()}
@@ -119,9 +120,30 @@ export default function App() {
   return (
     <main>
       <Header />
-      {renderGameStatus()}
+      <div aria-live="polite" role="status">
+        {renderGameStatus()}
+      </div>
       <div className="allies">{populateAllies()}</div>
       <div className="word">{populatedWord}</div>
+
+      {/** This section is combined visually-hidden aria-live region for status updates */}
+      <div className="sr-only" aria-live="polite" role="status">
+        <p>
+          <p>
+            {currentWord.includes(lastGuessedLetter)
+              ? `Correct! The letter ${lastGuessedLetter} is in the word.`
+              : `Sorry, the letter ${lastGuessedLetter} is not in the word.`}
+              You have {guessesLeft} guesses left.
+          </p>
+          Current word:{" "}
+          {currentWord
+            .split("")
+            .map((letter) =>
+              guessed.includes(letter) ? letter + "." : "blank.",
+            )
+            .join(" ")}
+        </p>
+      </div>
       <div className="keyboard">{populateKeyboard}</div>
       {isGameOver && (
         <button className="new-game" onClick={handleNewGame}>
