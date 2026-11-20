@@ -4,6 +4,7 @@ import { getFarewellText, getWord } from "../utils";
 import { clsx } from "clsx";
 import Header from "./components/Header";
 import AvengerTile from "./components/AvengerTile";
+import Confetti from "react-confetti";
 
 /**
  * features to add
@@ -124,6 +125,7 @@ export default function App() {
   }
   return (
     <main>
+      {isGameWon && <Confetti />}
       <Header />
       <div aria-live="polite" role="status">
         {renderGameStatus()}
