@@ -2,7 +2,7 @@ import { useState } from "react";
 import { avengers } from "../avengers";
 import { getFarewellText, getWord } from "../utils";
 import { clsx } from "clsx";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "./components/Header";
 import AvengerTile from "./components/AvengerTile";
 import Confetti from "react-confetti";
