@@ -124,6 +124,18 @@ span {
   border-radius: 7px;
 }
 
+.avenger-tile-dead::before {
+  content: "💀";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: inherit;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 0.85rem;
+}
+
 .allies {
   margin-top: 35px;
   display: flex;

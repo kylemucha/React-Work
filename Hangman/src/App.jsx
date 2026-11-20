@@ -105,14 +105,14 @@ export default function App() {
       return (
         <div className="win-status">
           <p>You win!</p>
-          <p>Well done!</p>
+          <p>Well done! 🎉</p>
         </div>
       );
     } else if (isGameLost) {
       return (
         <div className="lose-status">
           <p>You Lose!</p>
-          <p>All hail DR. DOOM!</p>
+          <p>All hail DR. DOOM! 🧎</p>
         </div>
       );
     }
