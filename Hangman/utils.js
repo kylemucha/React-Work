@@ -1,5 +1,9 @@
 import { words } from "./words"
 
+export function getWord() {
+    const randomWordNumber = Math.floor(Math.random() * words.length);
+    return words[randomWordNumber];
+}
 
 export function getFarewellText(avenger) {
     const options = [
@@ -18,6 +22,5 @@ export function getFarewellText(avenger) {
     ];
 
     const randomIndex = Math.floor(Math.random() * options.length);
-    const word = words[randomIndex];
     return (options[randomIndex]);
 }

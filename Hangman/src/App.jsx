@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { avengers } from "../avengers";
-import { getFarewellText } from "../utils";
+import { getFarewellText, getWord } from "../utils";
 import { clsx } from "clsx";
 import Header from "./components/Header";
 import AvengerTile from "./components/AvengerTile";
@@ -13,7 +13,7 @@ import AvengerTile from "./components/AvengerTile";
 
 export default function App() {
   // state variables
-  const [currentWord, setCurrentWord] = useState("react");
+  const [currentWord, setCurrentWord] = useState(getWord);
   const [guessed, setGuessed] = useState([]);
   const [farewellText, setFarewellText] = useState("");
 
@@ -28,7 +28,7 @@ export default function App() {
   const isGameLost = wrongGuessCount >= guessesLeft;
   const isGameOver = isGameWon || isGameLost;
   const lastGuessedLetter = guessed[guessed.length - 1];
-  
+
   //static variables
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -115,6 +115,7 @@ export default function App() {
   function handleNewGame() {
     setGuessed([]);
     setFarewellText("");
+    setCurrentWord(getWord());
   }
   return (
     <main>
@@ -128,12 +129,12 @@ export default function App() {
       {/** This section is combined visually-hidden aria-live region for status updates */}
       <div className="sr-only" aria-live="polite" role="status">
         <p>
-          <p>
-            {currentWord.includes(lastGuessedLetter)
-              ? `Correct! The letter ${lastGuessedLetter} is in the word.`
-              : `Sorry, the letter ${lastGuessedLetter} is not in the word.`}
-              You have {guessesLeft} guesses left.
-          </p>
+          {currentWord.includes(lastGuessedLetter)
+            ? `Correct! The letter ${lastGuessedLetter} is in the word.`
+            : `Sorry, the letter ${lastGuessedLetter} is not in the word.`}
+          You have {guessesLeft} guesses left.
+        </p>
+        <p>
           Current word:{" "}
           {currentWord
             .split("")
